@@ -1,4 +1,4 @@
-package com.odnoshivkin.noteManager.models;
+package com.odnoshivkin.note_manager.models.note;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;

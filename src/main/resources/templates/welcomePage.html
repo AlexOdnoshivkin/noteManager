@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Note manager Error Page</title>
+
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Notes Manager</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+<figure class="text-center">
+    <h1>Welcome to the Note Manager Application!</h1>
+    <h2><small class="text-muted"> Please select an action </small></h2>
+</figure>
+
+<div class="<d-grid gap-6 d-md-flex justify-content-md-center">
+    <a type="button" th:href="@{redactor}" class="btn btn-primary btn-lg mr-md-2">Create new Note</a>
+    <a type="button" th:href="@{/notes}" class="btn btn-primary btn-lg">View saved notes</a>
+</div>
+
+</body>
+</html>

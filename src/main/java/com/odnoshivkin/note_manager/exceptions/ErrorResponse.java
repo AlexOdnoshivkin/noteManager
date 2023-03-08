@@ -1,4 +1,4 @@
-package com.odnoshivkin.noteManager.exceptions;
+package com.odnoshivkin.note_manager.exceptions;
 
 public class ErrorResponse {
     private final String message;

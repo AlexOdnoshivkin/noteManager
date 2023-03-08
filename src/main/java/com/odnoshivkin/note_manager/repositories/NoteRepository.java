@@ -1,6 +1,6 @@
-package com.odnoshivkin.noteManager.repositories;
+package com.odnoshivkin.note_manager.repositories;
 
-import com.odnoshivkin.noteManager.models.Note;
+import com.odnoshivkin.note_manager.models.note.Note;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Spring Boot Thymeleaf Application - Bootstrap Rich Text Editor</title>
+    <title>Note Manager - Note Title List</title>
 
     <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 </head>
@@ -11,7 +11,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-        <a class="navbar-brand" href="/">Thymeleaf - Bootstrap Rich Text Editor</a>
+        <a class="navbar-brand" href="/">Note Manager</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -20,19 +20,9 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
+                    <a class="nav-link" href="/">Home
                         <span class="sr-only">(current)</span>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
             </ul>
         </div>
     </div>
@@ -46,7 +36,7 @@
                th:text="${note.title}">
             </a>
 
-            <a th:href="@{/}" class="btn btn-primary">Create new Note</a>
+            <a th:href="@{/note}" class="btn btn-dark">Create new Note</a>
         </div>
 
         <nav aria-label="Page navigation" class="paging">
@@ -58,7 +48,7 @@
                 <th:block th:each="item : ${notes.paging.getItems()}">
                     <li class="page-item" th:classappend="${item.index == notes.paging.pageNumber? 'active' : ''}"
                         th:if="${item.pageItemType.name() == 'PAGE'}">
-                        <a class="page-link" th:href="@{'/notes?pageNumber=' + ${item.index}}"
+                        <a class="page-link" th:href="@{'/notes/?pageNumber=' + ${item.index}}"
                            th:text="${item.index}"></a>
                     </li>
                     <li class="page-item disabled" th:if="${item.pageItemType.name() == 'DOTS'}">
@@ -66,7 +56,8 @@
                     </li>
                 </th:block>
                 <li class="page-item" th:classappend="${!notes.paging.isNextEnabled()? 'disabled' : ''}">
-                    <a class="page-link" th:href="@{'/notes?pageNumber=' + ${notes.paging.pageNumber + 1}}">Next</a>
+                    <a class="page-link"
+                       th:href="@{'/notes/?pageNumber=' + ${notes.paging.pageNumber + 1}}">Next</a>
                 </li>
             </ul>
         </nav>

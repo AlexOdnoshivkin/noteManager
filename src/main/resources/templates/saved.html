@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <title>Spring Boot Thymeleaf Application - Bootstrap Rich Text Editor</title>
+  <title>Note Manager - Saved Note Page</title>
 
   <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 </head>
@@ -11,7 +11,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
   <div class="container">
-    <a class="navbar-brand" href="/">Thymeleaf - Bootstrap Rich Text Editor</a>
+    <a class="navbar-brand" href="/">Note Manager</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
             aria-controls="navbarResponsive"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -20,19 +20,9 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home
+          <a class="nav-link" href="/">Home
             <span class="sr-only">(current)</span>
           </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
       </ul>
     </div>
   </div>
@@ -45,7 +35,7 @@
       <div th:utext="${note.content}">Content</div>
 
       <a th:href="@{/notes}" class="btn btn-primary">To Notes List</a>
-      <a th:href="@{/(id = ${note.id})}" class="btn btn-primary">Edit Note</a>
+      <a th:href="@{/note(id = ${note.id})}" class="btn btn-primary">Edit Note</a>
     </div>
   </div>
 </div>

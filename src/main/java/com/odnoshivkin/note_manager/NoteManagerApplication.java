@@ -1,4 +1,4 @@
-package com.odnoshivkin.noteManager;
+package com.odnoshivkin.note_manager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.odnoshivkin.noteManager.models.paging;
+package com.odnoshivkin.note_manager.models.paging;
 
 import lombok.*;
 

@@ -1,8 +1,7 @@
-package com.odnoshivkin.noteManager.controllers;
+package com.odnoshivkin.note_manager.controllers;
 
-import com.odnoshivkin.noteManager.models.NoteDto;
-import com.odnoshivkin.noteManager.services.NoteService;
-import jakarta.servlet.http.HttpServlet;
+import com.odnoshivkin.note_manager.models.note.NoteDto;
+import com.odnoshivkin.note_manager.services.NoteService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -13,30 +12,36 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-@RequestMapping({"/", "index"})
 @RequiredArgsConstructor
 @Slf4j
 public class NoteController {
 
     private final NoteService noteService;
 
-    @GetMapping
-    public String main(Model model, @RequestParam(name = "id", required = false) Long id) {
+    @GetMapping("/")
+    public String welcomePage() {
+        log.info("Выведена страница приветствия");
+        return "welcomePage";
+    }
+
+    @GetMapping("/back")
+    public String back(HttpServletRequest request) {
+        log.info("Задействована кнопка 'назад'");
+        return "redirect:" + request.getHeader("Referer");
+    }
+
+    @GetMapping("/note")
+    public String noteRedactor(Model model, @RequestParam(name = "id", required = false) Long id) {
         if (id == null) {
             model.addAttribute("note", new NoteDto());
         } else {
             model.addAttribute("note", noteService.getNoteById(id));
         }
         log.info("Выведена страница редактирования с атрибутами:{}", model);
-        return "index";
+        return "redactor";
     }
 
-    @GetMapping("/back")
-    public String back(Model model, HttpServletRequest request) {
-        return "redirect:" + request.getHeader("Referer");
-    }
-
-    @PostMapping
+    @PostMapping("/note")
     public String save(@Valid NoteDto noteDto, Model model) {
         NoteDto savedNote = noteService.saveNote(noteDto);
         model.addAttribute("note", savedNote);
@@ -44,7 +49,7 @@ public class NoteController {
         return "saved";
     }
 
-    @PutMapping
+    @PutMapping("/note")
     public String putNote(@Valid NoteDto noteDto, Model model) {
         NoteDto updatedNote = noteService.putNote(noteDto);
         model.addAttribute("note", updatedNote);
@@ -52,7 +57,7 @@ public class NoteController {
         return "saved";
     }
 
-    @DeleteMapping
+    @DeleteMapping("/note")
     public String deleteNote(@RequestParam(name = "id") Long id) {
         noteService.deleteNote(id);
         log.info("Удалена заметка с id {}", id);
@@ -69,13 +74,11 @@ public class NoteController {
         return "notesTitleList";
     }
 
-    @GetMapping("/note")
-    public String getNoteById(Model model, @RequestParam(name = "id") Long id) {
+    @GetMapping("/note/{id}")
+    public String getNoteById(Model model, @PathVariable(name = "id") Long id) {
         NoteDto noteDto = noteService.getNoteById(id);
         model.addAttribute("note", noteDto);
         log.info("Получена заметка: {}", noteDto);
         return "saved";
     }
-
-
 }

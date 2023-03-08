@@ -1,11 +1,11 @@
-package com.odnoshivkin.noteManager.services;
+package com.odnoshivkin.note_manager.services;
 
-import com.odnoshivkin.noteManager.models.Note;
-import com.odnoshivkin.noteManager.models.NoteDto;
-import com.odnoshivkin.noteManager.models.NoteMapper;
-import com.odnoshivkin.noteManager.models.paging.Paged;
-import com.odnoshivkin.noteManager.models.paging.Paging;
-import com.odnoshivkin.noteManager.repositories.NoteRepository;
+import com.odnoshivkin.note_manager.models.note.Note;
+import com.odnoshivkin.note_manager.models.note.NoteDto;
+import com.odnoshivkin.note_manager.models.note.NoteMapper;
+import com.odnoshivkin.note_manager.models.paging.Paged;
+import com.odnoshivkin.note_manager.models.paging.Paging;
+import com.odnoshivkin.note_manager.repositories.NoteRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;

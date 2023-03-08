@@ -1,4 +1,4 @@
-package com.odnoshivkin.noteManager.models;
+package com.odnoshivkin.note_manager.models.note;
 
 public class NoteMapper {
     // Приватный конструктор для обеспечения неинстанцируемости класса
